@@ -8,7 +8,9 @@ public class MyHeap {
   private static void pushDown(int[]data,int size,int index) {
     int c1 = 2*index+1;
     int c2 = 2*index+2;
-    if (c2 > size) {
+    if (c1 > size  //there may be some edge cases that I have to cover
+                  //this might happen when data[index] is passed towards bottom right
+    || (data[index] > data[c1] && data[index] > data[c2])) {
       return;
     } else {
       if (data[c1] > data[c2]) {
@@ -21,4 +23,10 @@ public class MyHeap {
     }
   }
 
+  private static void pushUp(int[]data,int index) {
+    // int p = (index-1)/2;
+    // if () {
+    //
+    // }
+  }
 }
