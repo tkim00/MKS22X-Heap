@@ -5,7 +5,7 @@ public class MyHeap {
     data[j] = x;
   }
 
-  public static void pushDown(int[]data,int size,int index) {
+  private static void pushDown(int[]data,int size,int index) {
     int c1 = 2*index+1;
     int c2 = 2*index+2;
     if (c1 > size  //there may be some edge cases that I have to cover
@@ -21,7 +21,7 @@ public class MyHeap {
           swap(data, c2, index);
           pushDown(data, size, c2);
         }
-      } else {
+      } else { //edge case when the value is being passed down to the last corner.
         swap(data, c1, index);
         pushDown(data, size, c1);
       }
@@ -29,9 +29,12 @@ public class MyHeap {
   }
 
   private static void pushUp(int[]data,int index) {
-    // int p = (index-1)/2;
-    // if () {
-    //
-    // }
+    int p = (index-1)/2;
+    if (p > index || index == 0) {
+      return;
+    } else {
+      swap(data, p, index);
+      pushUp(data, p);
+    }
   }
 }
