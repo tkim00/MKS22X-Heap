@@ -39,9 +39,16 @@ public class MyHeap {
     }
   }
 
-  public static void heapify (int[] data) {
-    for (int i = (data.length-2)/2; i >= 0; i--) {
-      pushDown(data, data.length-1, i);
+  public static void heapify(int[] data, int k) { //k is the index of the last element
+    for (int i = (k-1)/2; i >= 0; i--) {
+      pushDown(data, k, i);
+    }
+  }
+
+  public static void heapsort(int[] data) {
+    for (int k = data.length-1; k > 0; k--) {
+      heapify(data, k);
+      swap(data, 0, k);
     }
   }
 }
