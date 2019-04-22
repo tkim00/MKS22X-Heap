@@ -20,7 +20,7 @@ public class MyHeap {
         swap(data, c2, index);
         pushDown(data, size, c2);
       }
-    } else {
+    } else { //covers edge cases
       if (data[index] >= data[c1]) {
         return;
       }
